@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:storag_app/constance.dart';
+import 'package:storag_app/myclass.dart';
 import 'package:storag_app/screens/home_detail.dart';
 
 class HomeBody extends StatelessWidget {
@@ -9,6 +11,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    var provider = Provider.of<Myclass>(context, listen: false);
     return SafeArea(
         child: Column(
       children: [
@@ -31,7 +34,14 @@ class HomeBody extends StatelessWidget {
                 itemCount: kproduct.length,
                 itemBuilder: (context, index) => ProductCard(
                   index: index,
+                  myproduct: kproduct,
                   ontab: () {
+                    provider.product(
+                      title:kproduct[index]['title'],
+                      body:kproduct[index]['body'],
+                      price:kproduct[index]['price'],
+                      image:kproduct[index]['image'],
+                      );
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => HomeDetail(),
                     ));
@@ -47,15 +57,15 @@ class HomeBody extends StatelessWidget {
 }
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key, this.index, required this.ontab})
+  const ProductCard({Key? key, this.index, required this.ontab, this.myproduct})
       : super(key: key);
   final index;
+  final myproduct;
   // ignore: non_constant_identifier_names
   final VoidCallback ontab;
 
   @override
   Widget build(BuildContext context) {
-    var myproduct = kproduct;
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Container(

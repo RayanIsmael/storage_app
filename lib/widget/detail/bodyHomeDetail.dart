@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:storag_app/constance.dart';
+import 'package:storag_app/myclass.dart';
 
 class DetailBody extends StatelessWidget {
   const DetailBody({Key? key}) : super(key: key);
@@ -8,6 +10,7 @@ class DetailBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    var provider = Provider.of<Myclass>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,11 +38,14 @@ class DetailBody extends StatelessWidget {
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      child: Image.asset(
-                        "images/dd.png",
-                        fit: BoxFit.cover,
-                        height: height * 0.2,
-                        width: width * 0.38,
+                      child: Padding(
+                        padding: EdgeInsets.all(height * 0.04),
+                        child: Image.asset(
+                          "${provider.imagep}",
+                          fit: BoxFit.cover,
+                          height: height * 0.2,
+                          width: width * 0.38,
+                        ),
                       ),
                     ),
                   ],
@@ -106,7 +112,7 @@ class DetailBody extends StatelessWidget {
               ),
               ///////
               Text(
-                "Name Of Products",
+                "${provider.titlep}",
                 style: Theme.of(context).textTheme.headline5,
               ),
               /////
@@ -115,7 +121,7 @@ class DetailBody extends StatelessWidget {
               ),
               ///////
               Text(
-                "Price:\$9999",
+                "Price:\$${provider.pricep}",
                 style: TextStyle(fontSize: 24, color: ksecondry),
               ),
               /////
@@ -130,7 +136,7 @@ class DetailBody extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: height * 0.02),
           padding: EdgeInsets.symmetric(horizontal: width * 0.05),
           child: Text(
-            "body",
+            "${provider.bodyp}",
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
         ),

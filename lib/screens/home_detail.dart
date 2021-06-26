@@ -4,7 +4,6 @@ import 'package:storag_app/widget/detail/bodyHomeDetail.dart';
 
 class HomeDetail extends StatelessWidget {
   const HomeDetail({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
