@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const kmain = Colors.cyan;
 const ksecondry = Colors.amber;
-const kbackgroundcolor = Colors.white;
+const kbackgroundcolor = Color(0xFFF1EFF1);
 
 const List kproduct = [
   {

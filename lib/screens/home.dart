@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: kmain,
       elevation: 0,
-      title: Text('Home Screen'),
+      title: Text('Products'),
       centerTitle: true,
       
     );
